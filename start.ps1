@@ -29,7 +29,7 @@ winget install Mozilla.Firefox --accept-source-agreements --accept-package-agree
 
 # Removing Preinstalled Apps
 
-winget uninstall Microsoft.Teams --accept-source-agreements --accept-package-agreements
+winget uninstall Microsoft.Teams
 
 # Removing OneDrive
 
