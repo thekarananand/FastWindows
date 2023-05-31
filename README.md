@@ -1,4 +1,5 @@
+Run on PowerShell as Admin
 ```
-iwr -useb https://raw.githubusercontent.com/thekarananand/FastWindows/main/start.ps1 | iex
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/start.ps1 | iex
 
 ```
