@@ -3,18 +3,12 @@
 Get-AppxPackage | Remove-AppxPackage
 Get-AppxPackage | Remove-AppxPackage
 
-# To make Invoke-WebRequest work
+# Installing Winget
 
-Set-ItemProperty -Path "HKLM:\Software\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 1
-Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 1
-
-# Installing/Updating Winget
-
-$URL = "https://api.github.com/repos/microsoft/winget-cli/releases/latest"
-$URL = (Invoke-WebRequest -Uri $URL).Content | ConvertFrom-Json | Select-Object -ExpandProperty "assets" | Where-Object "browser_download_url" -Match '.msixbundle' | Select-Object -ExpandProperty "browser_download_url"
-Invoke-WebRequest -Uri $URL -OutFile "Setup.msix" -UseBasicParsing
-Add-AppxPackage -Path "Setup.msix"
-Remove-Item "Setup.msix"
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
+Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+Install-Script -Name winget-install -Force
+winget-install.ps1
 
 # Bringing Back Essential Store Apps
 
