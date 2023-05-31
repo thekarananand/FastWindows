@@ -1,3 +1,13 @@
+# Check for Admin Privileges
+
+$Admin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
+
+if (-not $Admin) {
+    Write-Host "Please run the script as an administrator."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    Exit
+}
+
 # Removing All Store Apps
 
 Get-AppxPackage | Remove-AppxPackage
@@ -22,6 +32,7 @@ Get-AppxPackage -allusers Microsoft.ScreenSketch | Foreach {Add-AppxPackage -Dis
 # Installing new Apps
 
 winget install Mozilla.Firefox --accept-source-agreements --accept-package-agreements
+winget install Microsoft.WindowsTerminal --accept-source-agreements --accept-package-agreements
 
 # Removing Preinstalled Apps
 
@@ -62,3 +73,26 @@ If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search")) {
     New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search"
 }
 Set-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search" DisableWebSearch -Value 1
+
+If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize")) {
+    New-Item "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+}
+Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" AppsUseLightTheme 0
+
+If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize")) {
+    New-Item "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+}
+Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" SystemUsesLightTheme 0
+
+If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize")) {
+    New-Item "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+}
+Set-ItemProperty "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds" ShellFeedsTaskbarViewMode 2
+
+# Removing Unnecessary Shortcuts
+
+Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\OneDrive.lnk
+Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
+Remove-Item C:\ProgramData\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
+
+Stop-Process -Name explorer -Force
