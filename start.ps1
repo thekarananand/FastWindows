@@ -1,3 +1,6 @@
+Set-ItemProperty -Path "HKLM:\Software\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 1
+Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 1
+
 # Installing/Updating Winget
 
 $URL = "https://api.github.com/repos/microsoft/winget-cli/releases/latest"
