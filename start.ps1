@@ -1,3 +1,8 @@
+# Removing All Store Apps
+
+Get-AppxPackage | Remove-AppxPackage
+Get-AppxPackage | Remove-AppxPackage
+
 # To make Invoke-WebRequest work
 
 Set-ItemProperty -Path "HKLM:\Software\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 1
@@ -10,11 +15,6 @@ $URL = (Invoke-WebRequest -Uri $URL).Content | ConvertFrom-Json | Select-Object 
 Invoke-WebRequest -Uri $URL -OutFile "Setup.msix" -UseBasicParsing
 Add-AppxPackage -Path "Setup.msix"
 Remove-Item "Setup.msix"
-
-# Removing All Store Apps
-
-Get-AppxPackage | Remove-AppxPackage
-Get-AppxPackage | Remove-AppxPackage
 
 # Bringing Back Essential Store Apps
 
