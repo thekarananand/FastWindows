@@ -1,3 +1,5 @@
+# To make Invoke-WebRequest work
+
 Set-ItemProperty -Path "HKLM:\Software\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 1
 Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 1
 
