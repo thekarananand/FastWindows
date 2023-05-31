@@ -25,11 +25,11 @@ Get-AppxPackage -allusers Microsoft.ScreenSketch | Foreach {Add-AppxPackage -Dis
 
 # Installing new Apps
 
-winget install Mozilla.Firefox
+winget install Mozilla.Firefox --accept-source-agreements --accept-package-agreements
 
 # Removing Preinstalled Apps
 
-winget uninstall Microsoft.Teams
+winget uninstall Microsoft.Teams --accept-source-agreements --accept-package-agreements
 
 # Removing OneDrive
 
