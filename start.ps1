@@ -95,4 +95,6 @@ Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs
 Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
 Remove-Item C:\ProgramData\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
 
+Set-ExecutionPolicy -ExecutionPolicy Restricted -Force
+
 Stop-Process -Name explorer -Force
