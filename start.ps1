@@ -98,6 +98,12 @@ if (!(Test-Path -Path "HKCU:\Software\Policies\Microsoft\Office\Teams")) {
 }
 Set-ItemProperty -Path "HKCU:\Software\Policies\Microsoft\Office\Teams" -Name "ChatButtonVisibility" -Value 0
 
+if (!(Test-Path -Path "HKCU:\Software\Microsoft\Office\Teams\LivePreview")) {
+    New-Item -Path "HKCU:\Software\Microsoft\Office\Teams\LivePreview" -Force | Out-Null
+}
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Office\Teams\LivePreview" -Name "Enabled" -Value 0
+
+
 # Enable Dark Theme for Apps
 
 If (!(Test-Path -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize")) {
