@@ -72,6 +72,12 @@ If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo
 } 
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" -Name Enabled -Value 0
 
+# Disable Windows Search history
+if (!(Test-Path -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search")) {
+    New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Force | Out-Null
+}
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "SearchHistoryEnabled" -Value 0
+
 # Disable Windows Web Search
 
 If (!(Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search")) {
@@ -85,6 +91,12 @@ if (!(Test-Path -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search"))
     New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Force
 }
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search" -Name "BingSearchEnabled" -Value 0
+
+# Remove Teams bubble chat
+if (!(Test-Path -Path "HKCU:\Software\Policies\Microsoft\Office\Teams")) {
+    New-Item -Path "HKCU:\Software\Policies\Microsoft\Office\Teams" -Force | Out-Null
+}
+Set-ItemProperty -Path "HKCU:\Software\Policies\Microsoft\Office\Teams" -Name "ChatButtonVisibility" -Value 0
 
 # Enable Dark Theme for Apps
 
