@@ -267,11 +267,6 @@ Clear-RecycleBin -Confirm:$false
 
 Stop-Process -Name explorer -Force
 
-# Update Apps
-
-winget upgrade -h --all
-
-
 # Removing Unnecessary Shortcuts
 Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\OneDrive.lnk
 Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
