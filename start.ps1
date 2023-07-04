@@ -15,11 +15,11 @@ Get-AppxPackage | Remove-AppxPackage
 
 # Installing Winget
 
-Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
-Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
-Install-Script -Name winget-install -Force
-winget-install.ps1
+# Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
+# Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+# Install-Script -Name winget-install -Force
+# winget-install.ps1
 
 # Bringing Back Essential Store Apps
 
@@ -29,6 +29,7 @@ Get-AppxPackage -allusers Microsoft.WindowsNotepad | Foreach {Add-AppxPackage -D
 Get-AppxPackage -allusers Microsoft.WindowsCalculator | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 Get-AppxPackage -allusers Microsoft.Windows.Photos | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 Get-AppxPackage -allusers Microsoft.ScreenSketch | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+Get-AppxPackage -allusers Microsoft.DesktopAppInstaller | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 
 # Installing new Apps
 
