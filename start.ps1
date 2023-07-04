@@ -39,6 +39,10 @@ winget install Microsoft.WindowsTerminal --accept-source-agreements --accept-pac
 
 winget uninstall Microsoft.Teams
 
+# Update Apps
+
+winget upgrade -h --all
+
 # Removing OneDrive
 
 taskkill /f /im OneDrive.exe
