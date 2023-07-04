@@ -21,6 +21,8 @@ Get-AppxPackage | Remove-AppxPackage
 # Install-Script -Name winget-install -Force
 # winget-install.ps1
 
+# Set-ExecutionPolicy -ExecutionPolicy Restricted -Force
+
 # Bringing Back Essential Store Apps
 
 Get-AppxPackage -allusers Microsoft.WindowsStore | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
@@ -39,10 +41,6 @@ winget install Microsoft.WindowsTerminal --accept-source-agreements --accept-pac
 # Removing Preinstalled Apps
 
 winget uninstall Microsoft.Teams
-
-# Update Apps
-
-winget upgrade -h --all
 
 # Removing OneDrive
 
@@ -246,12 +244,6 @@ if (!(Test-Path -Path "HKLM:\SYSTEM\Maps")) {
 Set-ItemProperty -Path "HKLM:\SYSTEM\Maps" -Name "AutoUpdateEnabled" -Type DWord -Value 0
 
 
-# Removing Unnecessary Shortcuts
-Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\OneDrive.lnk
-Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
-Remove-Item C:\ProgramData\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
-
-
 # Clear Internet Explorer cache
 Clear-IECache -Confirm:$false
 
@@ -273,8 +265,17 @@ Start-Process explorer
 # Clear Recycle Bin
 Clear-RecycleBin -Confirm:$false
 
+Stop-Process -Name explorer -Force
 
-Set-ExecutionPolicy -ExecutionPolicy Restricted -Force
+# Update Apps
+
+winget upgrade -h --all
+
+
+# Removing Unnecessary Shortcuts
+Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\OneDrive.lnk
+Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
+Remove-Item C:\ProgramData\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
 
 Stop-Process -Name explorer -Force
 
