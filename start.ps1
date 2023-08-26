@@ -37,12 +37,26 @@ Get-AppxPackage -allusers Microsoft.DesktopAppInstaller | Foreach {Add-AppxPacka
 
 winget install Mozilla.Firefox --accept-source-agreements --accept-package-agreements
 winget install Microsoft.WindowsTerminal --accept-source-agreements --accept-package-agreements
+winget install Git.Git --accept-source-agreements --accept-package-agreements
+winget install Microsoft.VisualStudioCode --accept-source-agreements --accept-package-agreements
+
 
 # Removing Preinstalled Apps
 
 winget uninstall Microsoft.Teams
+winget uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe
+winget uninstall Microsoft.OneDrive
+winget uninstall --name "Microsoft Update Health Tools"
 
 # Removing OneDrive
+
+# Edge Removal Tool
+
+iex .\edgeremoval.bat
+
+
+
+
 
 taskkill /f /im OneDrive.exe
 %SystemRoot%\System32\OneDriveSetup.exe /uninstall
@@ -243,6 +257,10 @@ if (!(Test-Path -Path "HKLM:\SYSTEM\Maps")) {
 }
 Set-ItemProperty -Path "HKLM:\SYSTEM\Maps" -Name "AutoUpdateEnabled" -Type DWord -Value 0
 
+# Show File Extensions
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1
+
 
 # Clear Internet Explorer cache
 Clear-IECache -Confirm:$false
@@ -265,13 +283,13 @@ Start-Process explorer
 # Clear Recycle Bin
 Clear-RecycleBin -Confirm:$false
 
-Stop-Process -Name explorer -Force
-
 # Removing Unnecessary Shortcuts
 Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\OneDrive.lnk
 Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
 Remove-Item C:\ProgramData\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
 
-Stop-Process -Name explorer -Force
+# Restart Windows Explorer to apply the changes
+Stop-Process -Name "explorer" -Force
+Start-Process "explorer"
 
 Exit
