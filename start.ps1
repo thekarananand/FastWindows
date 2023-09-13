@@ -50,7 +50,7 @@ winget uninstall --name "Microsoft Update Health Tools"
 
 # Edge Removal Tool
 
-iex https://raw.githubusercontent.com/thekarananand/FastWindows/main/Scripts/edgeremoval.bat
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Scripts/edgeremoval.bat | iex
 
 # Remove OneDrive
 
@@ -246,7 +246,7 @@ if (!(Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds")
 }
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" -Name "EnableFeeds" -Value 0
 
-iex https://raw.githubusercontent.com/thekarananand/FastWindows/main/newscript.ps1
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/newscript.ps1 | iex
 
 #-------------------------------------------------------------
 
