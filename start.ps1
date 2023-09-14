@@ -39,7 +39,9 @@ Get-AppxPackage -allusers Microsoft.DesktopAppInstaller | Foreach {Add-AppxPacka
 winget install Mozilla.Firefox --accept-source-agreements --accept-package-agreements
 winget install Microsoft.WindowsTerminal --accept-source-agreements --accept-package-agreements
 winget install Git.Git --accept-source-agreements --accept-package-agreements
+winget install GitHub.cli --accept-source-agreements --accept-package-agreements
 winget install Microsoft.VisualStudioCode --accept-source-agreements --accept-package-agreements
+winget install KDE.Okular --accept-source-agreements --accept-package-agreements
 
 
 # Removing Preinstalled Apps
@@ -52,6 +54,9 @@ winget uninstall --name "Microsoft Update Health Tools"
 # Edge Removal Tool
 
 irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Scripts/edgeremoval.bat | iex
+
+cd "C:\Program Files (x86)\Microsoft\EdgeWebView\Application\1*\Installer"
+.\setup.exe --uninstall --msedgewebview --system-level --verbose-logging --force-uninstall
 
 # Remove OneDrive
 
