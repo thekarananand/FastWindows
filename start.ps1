@@ -286,6 +286,12 @@ Remove-Item C:\ProgramData\Microsoft\Windows\Start` Menu\Programs\Firefox` Priva
 Stop-Process -Name "explorer" -Force
 Start-Process "explorer"
 
+# Servies 
+
+
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/service.ps1 | iex
+
+
 echo "DONE........"
 Pause
 
