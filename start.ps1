@@ -7,6 +7,8 @@ if (-not $Admin) {
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     Exit
 }
+# Image Package Remover
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/packagesImage.ps1 | iex
 
 # Removing All Store Apps
 
@@ -32,6 +34,7 @@ Get-AppxPackage -allusers Microsoft.Paint | Foreach {Add-AppxPackage -DisableDev
 Get-AppxPackage -allusers Microsoft.WindowsCalculator | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 Get-AppxPackage -allusers Microsoft.Windows.Photos | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 Get-AppxPackage -allusers Microsoft.ScreenSketch | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+Get-AppxPackage -allusers Microsoft.MicrosoftStickyNotes | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 Get-AppxPackage -allusers Microsoft.DesktopAppInstaller | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 
 # Installing new Apps
