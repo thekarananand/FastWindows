@@ -28,7 +28,6 @@ winget install Microsoft.WindowsTerminal --accept-source-agreements --accept-pac
 winget install Git.Git --accept-source-agreements --accept-package-agreements
 winget install GitHub.cli --accept-source-agreements --accept-package-agreements
 winget install Microsoft.VisualStudioCode --accept-source-agreements --accept-package-agreements
-winget install KDE.Okular --accept-source-agreements --accept-package-agreements
 
 
 # Removing Preinstalled Apps
