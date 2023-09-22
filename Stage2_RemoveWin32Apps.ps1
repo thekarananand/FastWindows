@@ -8,6 +8,7 @@ try {
     .\setup.exe --uninstall --msedgewebview --system-level --verbose-logging --force-uninstall 
     cd "C:\Windows\system32"
     Write-Host "Removed   : Microsoft Edge"
+    Write-Host "Caution   : Edge Remover might be running... Let it do it's Job"
 } catch {
     Write-Host "Error     : Microsoft Edge"
 }
