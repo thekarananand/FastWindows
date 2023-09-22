@@ -1,3 +1,6 @@
+Write-Host "Stage 1 : REMOVING STORE PACKAGES"
+Write-Host "=========================================================`n"
+
 $packagesToSkip = @(
     "Microsoft.DesktopAppInstaller_2022.310.2333.0_neutral_~_8wekyb3d8bbwe",
     "Microsoft.HEIFImageExtension_1.0.43012.0_x64__8wekyb3d8bbwe",
@@ -19,18 +22,16 @@ dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | ForEach-
     $appxName = $packageName.Split('_')[0]
     
     if ($packagesToSkip -contains $packageName) {
-        Write-Host "Skipped        : $packageName"
+            Write-Host "Skipped   : $packageName"
     }
     else {
         try {
             dism /Online /Remove-ProvisionedAppxPackage /PackageName:$packageName | Out-Null
-            Write-Host "Removed        : $packageName"
-
             Get-AppxPackage -allusers $appxName | Remove-AppxPackage | Out-Null
-            Write-Host "Removed        : $appxName"
+            Write-Host "Removed   : $packageName"
 
         } catch {
-            Write-Host "Error Removing : $packageName"
+            Write-Host "Error     : $packageName"
         }
     }
 }

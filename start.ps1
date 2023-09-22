@@ -7,13 +7,9 @@ if (-not $Admin) {
     $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     Exit
 }
-# Image Package Remover
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/packagesImage.ps1 | iex
 
-# Removing All Store Apps
-
-Get-AppxPackage -allusers | Remove-AppxPackage
-Get-AppxPackage -allusers | Remove-AppxPackage
+# Package Remover
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage1_packageRemover.ps1 | iex
 
 # Installing Winget
 
@@ -24,17 +20,6 @@ Get-AppxPackage -allusers | Remove-AppxPackage
 # winget-install.ps1
 
 # Set-ExecutionPolicy -ExecutionPolicy Restricted -Force
-
-# Bringing Back Essential Store Apps
-
-Get-AppxPackage -allusers Microsoft.WindowsStore | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
-Get-AppxPackage -allusers Microsoft.WindowsTerminal | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
-Get-AppxPackage -allusers Microsoft.WindowsNotepad | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
-Get-AppxPackage -allusers Microsoft.Paint | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
-Get-AppxPackage -allusers Microsoft.WindowsCalculator | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
-Get-AppxPackage -allusers Microsoft.Windows.Photos | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
-Get-AppxPackage -allusers Microsoft.ScreenSketch | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
-Get-AppxPackage -allusers Microsoft.DesktopAppInstaller | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 
 # Installing new Apps
 
@@ -47,7 +32,7 @@ winget install KDE.Okular --accept-source-agreements --accept-package-agreements
 
 
 # Removing Preinstalled Apps
-
+z
 winget uninstall Microsoft.Teams
 winget uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe
 winget uninstall Microsoft.OneDrive
