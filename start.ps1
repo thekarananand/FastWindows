@@ -8,8 +8,12 @@ if (-not $Admin) {
     Exit
 }
 
-# Package Remover
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage1_packageRemover.ps1 | iex
+# Remove Appx Packages apps 
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage1_RemoveAppxPackages.ps1 | iex
+
+# Remove Win32 apps 
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage2_RemoveWin32Apps.ps1 | iex
+
 
 # Installing Winget
 
@@ -18,8 +22,10 @@ irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage1_pack
 # Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
 # Install-Script -Name winget-install -Force
 # winget-install.ps1
-
 # Set-ExecutionPolicy -ExecutionPolicy Restricted -Force
+
+
+
 
 # Installing new Apps
 
@@ -32,28 +38,15 @@ winget install Microsoft.VisualStudioCode --accept-source-agreements --accept-pa
 
 # Removing Preinstalled Apps
 z
-winget uninstall Microsoft.Teams
-winget uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe
-winget uninstall Microsoft.OneDrive
-winget uninstall --name "Microsoft Update Health Tools"
+
 
 # Edge Removal Tool
 
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Scripts/edgeremoval.bat | iex
 
-cd "C:\Program Files (x86)\Microsoft\EdgeWebView\Application\1*\Installer"
-.\setup.exe --uninstall --msedgewebview --system-level --verbose-logging --force-uninstall
 
 # Remove OneDrive
 
-taskkill /f /im OneDrive.exe
-%SystemRoot%\System32\OneDriveSetup.exe /uninstall
-%SystemRoot%\SysWOW64\OneDriveSetup.exe /uninstall
-winget uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe
-winget uninstall Microsoft.OneDrive
-Remove-Item -Recurse -Force -ErrorAction SilentlyContinue "$env:localappdata\Microsoft\OneDrive"
-Remove-Item -Recurse -Force -ErrorAction SilentlyContinue "$env:programdata\Microsoft OneDrive"
-Remove-Item -Recurse -Force -ErrorAction SilentlyContinue "C:\OneDriveTemp"
+
 
 # Removing Optional Components
 
