@@ -1,34 +1,31 @@
+$packagesToSkip = @(
+    "Microsoft.DesktopAppInstaller_2022.310.2333.0_neutral_~_8wekyb3d8bbwe",
+    "Microsoft.HEIFImageExtension_1.0.43012.0_x64__8wekyb3d8bbwe",
+    "Microsoft.HEVCVideoExtension_1.0.50361.0_x64__8wekyb3d8bbwe",
+    "Microsoft.RawImageExtension_2.1.30391.0_neutral_~_8wekyb3d8bbwe",
+    "Microsoft.ScreenSketch_2022.2201.12.0_neutral_~_8wekyb3d8bbwe",
+    "Microsoft.StorePurchaseApp_12008.1001.113.0_neutral_~_8wekyb3d8bbwe",
+    "Microsoft.VCLibs.140.00_14.0.30704.0_x64__8wekyb3d8bbwe",
+    "Microsoft.VP9VideoExtensions_1.0.50901.0_x64__8wekyb3d8bbwe",
+    "Microsoft.WebMediaExtensions_1.0.42192.0_neutral_~_8wekyb3d8bbwe",
+    "Microsoft.WebpImageExtension_1.0.42351.0_x64__8wekyb3d8bbwe",
+    "Microsoft.WindowsNotepad_11.2112.32.0_neutral_~_8wekyb3d8bbwe",
+    "Microsoft.WindowsStore_22204.1400.4.0_neutral_~_8wekyb3d8bbwe",
+    "Microsoft.WindowsTerminal_3001.12.10983.0_neutral_~_8wekyb3d8bbwe"
+)
 
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Clipchamp.Clipchamp | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.549981C3F5F10 | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.BingNews | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.BingWeather | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.GamingApp | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.GetHelp | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.Getstarted | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.MicrosoftOfficeHub | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.MicrosoftSolitaireCollection | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.MicrosoftStickyNotes | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.Paint | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.People | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.PowerAutomateDesktop | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.SecHealthUI | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.Todos | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.Windows.Photos | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.WindowsAlarms | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.WindowsCalculator | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.WindowsCamera | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String microsoft.windowscommunicationsapps | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.WindowsFeedbackHub | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.WindowsMaps | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.Xbox.TCUI | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.XboxGameOverlay | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.XboxGamingOverlay | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.XboxIdentityProvider | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.XboxSpeechToTextOverlay | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.YourPhone | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.ZuneMusic | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String Microsoft.ZuneVideo | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String MicrosoftCorporationII.QuickAssist | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String MicrosoftTeams | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
-dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | Select-String MicrosoftWindows.Client.WebExperience | ForEach-Object {$_.Line.Split(':')[1].Trim()} | ForEach-Object { dism /Online /Remove-ProvisionedAppxPackage /PackageName:$_}
+dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | ForEach-Object {
+    $packageName = $_.Line.Split(':')[1].Trim()
+    
+    if ($packagesToSkip -contains $packageName) {
+        Write-Host "Skipped        : $packageName"
+    }
+    else {
+        try {
+            dism /Online /Remove-ProvisionedAppxPackage /PackageName:$packageName | Out-Null
+            Write-Host "Removed        : $packageName"
+        } catch {
+            Write-Host "Error Removing : $packageName"
+        }
+    }
+}

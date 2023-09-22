@@ -12,8 +12,8 @@ irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/packagesIma
 
 # Removing All Store Apps
 
-Get-AppxPackage | Remove-AppxPackage
-Get-AppxPackage | Remove-AppxPackage
+Get-AppxPackage -allusers | Remove-AppxPackage
+Get-AppxPackage -allusers | Remove-AppxPackage
 
 # Installing Winget
 
@@ -34,7 +34,6 @@ Get-AppxPackage -allusers Microsoft.Paint | Foreach {Add-AppxPackage -DisableDev
 Get-AppxPackage -allusers Microsoft.WindowsCalculator | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 Get-AppxPackage -allusers Microsoft.Windows.Photos | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 Get-AppxPackage -allusers Microsoft.ScreenSketch | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
-Get-AppxPackage -allusers Microsoft.MicrosoftStickyNotes | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 Get-AppxPackage -allusers Microsoft.DesktopAppInstaller | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 
 # Installing new Apps
