@@ -16,6 +16,7 @@ $packagesToSkip = @(
 
 dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | ForEach-Object {
     $packageName = $_.Line.Split(':')[1].Trim()
+    $appxName = $packageName.Split('_')[0]
     
     if ($packagesToSkip -contains $packageName) {
         Write-Host "Skipped        : $packageName"
@@ -23,9 +24,16 @@ dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | ForEach-
     else {
         try {
             dism /Online /Remove-ProvisionedAppxPackage /PackageName:$packageName | Out-Null
+            Get-AppxPackage -allusers $appxName | Remove-AppxPackage | Out-Null
             Write-Host "Removed        : $packageName"
         } catch {
             Write-Host "Error Removing : $packageName"
         }
     }
 }
+
+# to check for Appx packages in the Image :
+# dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | ForEach-Object {$_.Line.Split(':')[1].Trim()}
+
+# to check for Appx packages installed :
+# Get-AppxPackage -allusers
