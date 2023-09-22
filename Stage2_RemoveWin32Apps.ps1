@@ -3,14 +3,9 @@ Write-Host "=========================================================`n"
 
 # Edge 
 
-Start-Process -FilePath "cmd.exe" -ArgumentList "/C irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Scripts/edgeremoval.bat" -Wait
-
-# irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Scripts/edgeremoval.bat | iex
-
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Scripts/edgeremoval.bat | iex
 cd "C:\Program Files (x86)\Microsoft\EdgeWebView\Application\1*\Installer"
 .\setup.exe --uninstall --msedgewebview --system-level --verbose-logging --force-uninstall
-Remove-Item -Path "C:\Program Files (x86)\Microsoft\Edge" -Recurse -Force
-Remove-Item -Path "C:\Program Files (x86)\Microsoft\EdgeUpdate" -Recurse -Force
 
 # Teams
 winget uninstall Microsoft.Teams --accept-source-agreements --accept-package-agreements
@@ -27,8 +22,5 @@ cd "C:\Windows\System32"
 OneDriveSetup.exe /uninstall
 cd "C:\Windows\SysWOW64"
 OneDriveSetup.exe /uninstall
-Remove-Item -Recurse -Force -ErrorAction SilentlyContinue "$env:localappdata\Microsoft\OneDrive"
-Remove-Item -Recurse -Force -ErrorAction SilentlyContinue "$env:programdata\Microsoft OneDrive"
-Remove-Item -Recurse -Force -ErrorAction SilentlyContinue "C:\OneDriveTemp"
 
 cd "C:\Windows\system32"
