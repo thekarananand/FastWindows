@@ -2,22 +2,36 @@ Write-Host "Stage 2 : REMOVING EDGE, ONEDRIVE, AND OTHER WIN32 APPS"
 Write-Host "=========================================================`n"
 
 # Edge 
-
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Scripts/edgeremoval.bat | iex
-cd "C:\Program Files (x86)\Microsoft\EdgeWebView\Application\1*\Installer"
-.\setup.exe --uninstall --msedgewebview --system-level --verbose-logging --force-uninstall
+try {
+    irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Scripts/edgeremoval.bat | iex
+    cd "C:\Program Files (x86)\Microsoft\EdgeWebView\Application\1*\Installer"
+    .\setup.exe --uninstall --msedgewebview --system-level --verbose-logging --force-uninstall 
+    cd "C:\Windows\system32"
+    Write-Host "Removed   : Microsoft Edge"
+} catch {
+    Write-Host "Error     : Microsoft Edge"
+}
 
 # Teams
-winget uninstall Microsoft.Teams --accept-source-agreements --accept-package-agreements
+try {
+    winget uninstall Microsoft.Teams --accept-source-agreements --silent 
+    Write-Host "Removed   : Microsoft Teams"
+} catch {
+    Write-Host "Error     : Microsoft Teams"
+}
 
 # OneDrive
-winget uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe --accept-source-agreements --accept-package-agreements
-winget uninstall Microsoft.OneDrive --accept-source-agreements --accept-package-agreements
+try {
+    taskkill /f /im OneDrive.exe
 
-taskkill /f /im OneDrive.exe
-cd "C:\Windows\System32"
-OneDriveSetup.exe /uninstall
-cd "C:\Windows\SysWOW64"
-OneDriveSetup.exe /uninstall
+    winget uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe --accept-source-agreements --silent
+    winget uninstall Microsoft.OneDrive --accept-source-agreements --silent
 
-cd "C:\Windows\system32"
+    cd "C:\Windows\System32"
+    OneDriveSetup.exe /uninstall
+    cd "C:\Windows\SysWOW64"
+    OneDriveSetup.exe /uninstall
+    Write-Host "Removed   : Microsoft OneDrive"
+} catch {
+    Write-Host "Error     : Microsoft OneDrive"
+}
