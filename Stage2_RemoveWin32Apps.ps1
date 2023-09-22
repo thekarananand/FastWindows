@@ -14,9 +14,6 @@ winget uninstall Microsoft.Teams --accept-source-agreements --accept-package-agr
 winget uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe --accept-source-agreements --accept-package-agreements
 winget uninstall Microsoft.OneDrive --accept-source-agreements --accept-package-agreements
 
-takeown /f C:Windows\System32\OneDriveSetup.exe
-del /f /q /s "C:\Windows\System32\OneDriveSetup.exe"
-
 taskkill /f /im OneDrive.exe
 cd "C:\Windows\System32"
 OneDriveSetup.exe /uninstall
