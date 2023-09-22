@@ -31,6 +31,7 @@ try {
     OneDriveSetup.exe /uninstall
     cd "C:\Windows\SysWOW64"
     OneDriveSetup.exe /uninstall
+    cd "C:\Windows\system32"
     Write-Host "Removed   : Microsoft OneDrive"
 } catch {
     Write-Host "Error     : Microsoft OneDrive"
