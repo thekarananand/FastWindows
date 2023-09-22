@@ -1,5 +1,5 @@
-Write-Host "Stage 2 : REMOVING EDGE, ONEDRIVE, AND OTHER WIN32 APPS"
-Write-Host "=========================================================`n"
+Write-Host "`nStage 2 : REMOVING EDGE, ONEDRIVE, AND OTHER WIN32 APPS"
+Write-Host "========================================================="
 
 # Edge 
 try {

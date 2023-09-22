@@ -1,5 +1,5 @@
-Write-Host "Stage 1 : REMOVING STORE PACKAGES"
-Write-Host "=========================================================`n"
+Write-Host "`nStage 1 : REMOVING STORE PACKAGES"
+Write-Host "========================================================="
 
 $packagesToSkip = @(
     "Microsoft.DesktopAppInstaller_2022.310.2333.0_neutral_~_8wekyb3d8bbwe",
