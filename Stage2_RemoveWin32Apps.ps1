@@ -14,7 +14,7 @@ try {
 
 # Teams
 try {
-    winget uninstall Microsoft.Teams --accept-source-agreements --silent 
+    winget uninstall Microsoft.Teams --accept-source-agreements --silent | Out-Null
     Write-Host "Removed   : Microsoft Teams"
 } catch {
     Write-Host "Error     : Microsoft Teams"
@@ -22,10 +22,10 @@ try {
 
 # OneDrive
 try {
-    taskkill /f /im OneDrive.exe
+    taskkill /f /im OneDrive.exe | Out-Null
 
-    winget uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe --accept-source-agreements --silent
-    winget uninstall Microsoft.OneDrive --accept-source-agreements --silent
+    winget uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe --accept-source-agreements --silent | Out-Null
+    winget uninstall Microsoft.OneDrive --accept-source-agreements --silent | Out-Null
 
     cd "C:\Windows\System32"
     OneDriveSetup.exe /uninstall
