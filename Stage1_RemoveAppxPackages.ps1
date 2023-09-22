@@ -14,7 +14,8 @@ $packagesToSkip = @(
     "Microsoft.WebpImageExtension_1.0.42351.0_x64__8wekyb3d8bbwe",
     "Microsoft.WindowsNotepad_11.2112.32.0_neutral_~_8wekyb3d8bbwe",
     "Microsoft.WindowsStore_22204.1400.4.0_neutral_~_8wekyb3d8bbwe",
-    "Microsoft.WindowsTerminal_3001.12.10983.0_neutral_~_8wekyb3d8bbwe"
+    "Microsoft.WindowsTerminal_3001.12.10983.0_neutral_~_8wekyb3d8bbwe",
+    "Microsoft.SecHealthUI_1000.22621.1.0_x64__8wekyb3d8bbwe"
 )
 
 dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | ForEach-Object {
