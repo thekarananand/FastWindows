@@ -24,8 +24,11 @@ dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | ForEach-
     else {
         try {
             dism /Online /Remove-ProvisionedAppxPackage /PackageName:$packageName | Out-Null
-            Get-AppxPackage -allusers $appxName | Remove-AppxPackage | Out-Null
             Write-Host "Removed        : $packageName"
+
+            Get-AppxPackage -allusers $appxName | Remove-AppxPackage | Out-Null
+            Write-Host "Removed        : $appxName"
+
         } catch {
             Write-Host "Error Removing : $packageName"
         }
