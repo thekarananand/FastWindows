@@ -4,21 +4,51 @@ Write-Host "========================================================="
 $Packages = @(
     "InternetExplorer",
     "Windows-Kernel-LA57",
+    "MediaPlayer"
     "Wallpaper-Content-Extended",
     "TabletPCMath",
     "LanguageFeatures-Handwriting",
     "LanguageFeatures-OCR",
     "LanguageFeatures-Speech",
     "LanguageFeatures-TextToSpeech"
-    )
+)
 
 foreach ($Package in $Packages) {
 
-    dism /Online /Get-Packages | Select-String "Package Identity" | Select-String $Package | ForEach-Object {
+    DISM /Online /Get-Packages | Select-String "Package Identity" | Select-String $Package | ForEach-Object {
         $packageName = $_.Line.Split(':')[1].Trim()
-        dism /Online /Remove-Package /NoRestart /PackageName:$packageName
+        DISM /Online /Remove-Package /NoRestart /PackageName:$packageName
     }
     Write-Host "Removed   : $packageName"
+}
+
+$Capabilities = @(
+    "WMIC",
+    "Windows.Kernel.LA57",
+    "OneCoreUAP.OneSync",
+    "Microsoft.Windows.WordPad",
+    "Microsoft.Windows.PowerShell.ISE",
+    "Microsoft.Windows.Notepad.System",
+    "Microsoft.Wallpapers.Extended",
+    "WindowsMediaPlayer",
+    "MathRecognizer",
+    "Language.TextToSpeech",
+    "Language.Speech",
+    "Language.OCR",
+    "Language.Handwriting",
+    "Hello.Face",
+    "DirectX",
+    "InternetExplorer",
+    "App.StepsRecorder"
+)
+
+foreach ($Capability in $Capabilities) {
+
+    DISM /Online /Get-Capabilities | Select-String "Package Identity" | Select-String $Capability | ForEach-Object {
+        $capabilityName = $_.Line.Split(':')[1].Trim()
+        DISM /Online /Remove-Capability /NoRestart /PackageName:$capabilityName
+    }
+    Write-Host "Removed   : $capabilityName"
 }
 
 
