@@ -20,6 +20,12 @@ irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage3_Inst
 # Remove Optional Features & Capabilities
 irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage4_RemoveOptionalFeatures.ps1 | iex
 
+# Regedit Tweaks
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage5_RegeditTweaks.ps1 | iex
+
+Stop-Process -Name "explorer" -Force
+Start-Process "explorer"
+
 echo "`nDONE........"
 Pause
 
