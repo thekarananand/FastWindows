@@ -55,7 +55,5 @@ foreach ($Capability in $Capabilities) {
         } catch {
             Write-Host "Error     : $capabilityName"
         }
-        
     }
-    Write-Host "Removed   : $capabilityName"
 }
