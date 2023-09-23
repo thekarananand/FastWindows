@@ -17,6 +17,9 @@ irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage2_Remo
 # Install New Apps 
 irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage3_InstallNewApps.ps1 | iex
 
+# Remove Optional Features & Capabilities
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage3_InstallNewApps.ps1 | iex
+
 echo "`nDONE........"
 Pause
 
