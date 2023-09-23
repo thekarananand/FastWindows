@@ -1,77 +1,25 @@
 Write-Host "`nStage 4 : REMOVED OPTIONAL FEATURES"
 Write-Host "========================================================="
 
+$Packages = @(
+    "InternetExplorer",
+    "Windows-Kernel-LA57",
+    "Wallpaper-Content-Extended",
+    "TabletPCMath",
+    "LanguageFeatures-Handwriting",
+    "LanguageFeatures-OCR",
+    "LanguageFeatures-Speech",
+    "LanguageFeatures-TextToSpeech"
+    )
 
-dism /Online /Get-Packages | Select-String "Package Identity" | Select-String "InternetExplorer" | ForEach-Object {
-    $packageName = $_.Line.Split(':')[1].Trim()
-    dism /Online /Remove-Package /NoRestart /PackageName:$packageName
+foreach ($Package in $Packages) {
+
+    dism /Online /Get-Packages | Select-String "Package Identity" | Select-String $Package | ForEach-Object {
+        $packageName = $_.Line.Split(':')[1].Trim()
+        dism /Online /Remove-Package /NoRestart /PackageName:$packageName
+    }
+    Write-Host "Removed   : $packageName"
 }
-
-dism /Online /Remove-Capability /NoRestart /CapabilityName:Browser.InternetExplorer~~~~0.0.11.0
-
-Write-Host "Removed   : Internet Explorer"
-
-dism /Online /Remove-Capability /NoRestart /CapabilityName:Microsoft.Windows.WordPad~~~~0.0.1.0
-Write-Host "Removed   : WordPad"
-
-dism /Online /Remove-Capability /NoRestart /CapabilityName:Microsoft.Windows.PowerShell.ISE~~~~0.0.1.0
-Write-Host "Removed   : PowerShell ISE"
-
-dism /Online /Remove-Capability /NoRestart /CapabilityName:Microsoft.Windows.Notepad.System~~~~0.0.1.0
-Write-Host "Removed   : NotePad (System)"
-
-dism /Online /Get-Packages | Select-String "Package Identity" | Select-String "MediaPlayer" | ForEach-Object {
-    $packageName = $_.Line.Split(':')[1].Trim()
-    dism /Online /Remove-Package /NoRestart /PackageName:$packageName
-}
-
-dism /Online /Remove-Capability /NoRestart /CapabilityName:Media.WindowsMediaPlayer~~~~0.0.12.0
-Write-Host "Removed   : Windows Media Player"
-
-dism /Online /Remove-Capability /NoRestart /CapabilityName:App.StepsRecorder~~~~0.0.1.0
-Write-Host "Removed   : StepsRecorder"
-
-dism /Online /Get-Packages | Select-String "Package Identity" | Select-String "Windows-Kernel-LA57" | ForEach-Object {
-    $packageName = $_.Line.Split(':')[1].Trim()
-    dism /Online /Remove-Package /NoRestart /PackageName:$packageName
-}
-Write-Host "Removed   : Windows Kernel LA57"
-
-dism /Online /Get-Packages | Select-String "Package Identity" | Select-String "Wallpaper-Content-Extended" | ForEach-Object {
-    $packageName = $_.Line.Split(':')[1].Trim()
-    dism /Online /Remove-Package /NoRestart /PackageName:$packageName
-}
-Write-Host "Removed   : Extended Wallpaper Content"
-
-dism /Online /Get-Packages | Select-String "Package Identity" | Select-String "TabletPCMath" | ForEach-Object {
-    $packageName = $_.Line.Split(':')[1].Trim()
-    dism /Online /Remove-Package /NoRestart /PackageName:$packageName
-}
-Write-Host "Removed   : Tablet PC Math"
-
-dism /Online /Get-Packages | Select-String "Package Identity" | Select-String "LanguageFeatures-Handwriting" | ForEach-Object {
-    $packageName = $_.Line.Split(':')[1].Trim()
-    dism /Online /Remove-Package /NoRestart /PackageName:$packageName
-}
-Write-Host "Removed   : Language Features - Handwriting"
-
-dism /Online /Get-Packages | Select-String "Package Identity" | Select-String "LanguageFeatures-OCR" | ForEach-Object {
-    $packageName = $_.Line.Split(':')[1].Trim()
-    dism /Online /Remove-Package /NoRestart /PackageName:$packageName
-}
-Write-Host "Removed   : Language Features - OCR"
-
-dism /Online /Get-Packages | Select-String "Package Identity" | Select-String "LanguageFeatures-Speech" | ForEach-Object {
-    $packageName = $_.Line.Split(':')[1].Trim()
-    dism /Online /Remove-Package /NoRestart /PackageName:$packageName
-}
-Write-Host "Removed   : Language Features - Speech"
-
-dism /Online /Get-Packages | Select-String "Package Identity" | Select-String "LanguageFeatures-TextToSpeech" | ForEach-Object {
-    $packageName = $_.Line.Split(':')[1].Trim()
-    dism /Online /Remove-Package /NoRestart /PackageName:$packageName
-}
-Write-Host "Removed   : Language Features - TextToSpeech"
 
 
 ######################################################################################################################################################
