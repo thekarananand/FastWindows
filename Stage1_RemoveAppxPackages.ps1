@@ -2,27 +2,27 @@ Write-Host "`nStage 1 : REMOVING STORE PACKAGES"
 Write-Host "========================================================="
 
 $packagesToSkip = @(
-    "Microsoft.DesktopAppInstaller_2022.310.2333.0_neutral_~_8wekyb3d8bbwe",
-    "Microsoft.HEIFImageExtension_1.0.43012.0_x64__8wekyb3d8bbwe",
-    "Microsoft.HEVCVideoExtension_1.0.50361.0_x64__8wekyb3d8bbwe",
-    "Microsoft.RawImageExtension_2.1.30391.0_neutral_~_8wekyb3d8bbwe",
-    "Microsoft.ScreenSketch_2022.2201.12.0_neutral_~_8wekyb3d8bbwe",
-    "Microsoft.StorePurchaseApp_12008.1001.113.0_neutral_~_8wekyb3d8bbwe",
-    "Microsoft.VCLibs.140.00_14.0.30704.0_x64__8wekyb3d8bbwe",
-    "Microsoft.VP9VideoExtensions_1.0.50901.0_x64__8wekyb3d8bbwe",
-    "Microsoft.WebMediaExtensions_1.0.42192.0_neutral_~_8wekyb3d8bbwe",
-    "Microsoft.WebpImageExtension_1.0.42351.0_x64__8wekyb3d8bbwe",
-    "Microsoft.WindowsNotepad_11.2112.32.0_neutral_~_8wekyb3d8bbwe",
-    "Microsoft.WindowsStore_22204.1400.4.0_neutral_~_8wekyb3d8bbwe",
-    "Microsoft.WindowsTerminal_3001.12.10983.0_neutral_~_8wekyb3d8bbwe",
-    "Microsoft.SecHealthUI_1000.22621.1.0_x64__8wekyb3d8bbwe"
+    "Microsoft.DesktopAppInstaller",
+    "Microsoft.HEIFImageExtension",
+    "Microsoft.HEVCVideoExtension",
+    "Microsoft.RawImageExtension",
+    "Microsoft.ScreenSketch",
+    "Microsoft.StorePurchaseApp",
+    "Microsoft.VCLibs.140.00",
+    "Microsoft.VP9VideoExtensions",
+    "Microsoft.WebMediaExtensions",
+    "Microsoft.WebpImageExtension",
+    "Microsoft.WindowsNotepad",
+    "Microsoft.WindowsStore",
+    "Microsoft.WindowsTerminal",
+    "Microsoft.SecHealthUI"
 )
 
 dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | ForEach-Object {
     $packageName = $_.Line.Split(':')[1].Trim()
     $appxName = $packageName.Split('_')[0]
     
-    if ($packagesToSkip -contains $packageName) {
+    if ($packagesToSkip -contains $appxName) {
             Write-Host "Skipped   : $packageName"
     }
     else {
