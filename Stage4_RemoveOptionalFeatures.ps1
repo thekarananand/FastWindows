@@ -50,7 +50,7 @@ foreach ($Capability in $Capabilities) {
     DISM /Online /Get-Capabilities | Select-String "Capability Identity" | Select-String $Capability | ForEach-Object {
         $capabilityName = $_.Line.Split(':')[1].Trim()
         try {
-            DISM /Online /Remove-Capability /NoRestart /CapabilityName:$capabilityName
+            DISM /Online /Remove-Capability /NoRestart /CapabilityName:$capabilityName | Out-Null
             Write-Host "Removed   : $capabilityName"
         } catch {
             Write-Host "Error     : $capabilityName"
