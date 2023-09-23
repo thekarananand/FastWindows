@@ -18,7 +18,7 @@ irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage2_Remo
 irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage3_InstallNewApps.ps1 | iex
 
 # Remove Optional Features & Capabilities
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage3_InstallNewApps.ps1 | iex
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage4_RemoveOptionalFeatures.ps1 | iex
 
 echo "`nDONE........"
 Pause
