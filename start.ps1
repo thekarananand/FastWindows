@@ -14,3 +14,10 @@ irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage1_Remo
 # Remove Win32 apps 
 irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage2_RemoveWin32Apps.ps1 | iex
 
+# Install New Apps 
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage3_InstallNewApps.ps1 | iex
+
+echo "`nDONE........"
+Pause
+
+Exit

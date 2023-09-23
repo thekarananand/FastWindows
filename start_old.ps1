@@ -14,6 +14,9 @@ irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage1_Remo
 # Remove Win32 apps 
 irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage2_RemoveWin32Apps.ps1 | iex
 
+# Install New Apps 
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage3_InstallNewApps.ps1 | iex
+
 
 # Installing Winget
 
@@ -31,21 +34,7 @@ irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage2_Remo
 
 winget install Mozilla.Firefox --accept-source-agreements --accept-package-agreements
 winget install Microsoft.WindowsTerminal --accept-source-agreements --accept-package-agreements
-winget install Git.Git --accept-source-agreements --accept-package-agreements
-winget install GitHub.cli --accept-source-agreements --accept-package-agreements
-winget install Microsoft.VisualStudioCode --accept-source-agreements --accept-package-agreements
-
-
-# Removing Preinstalled Apps
-z
-
-
-# Edge Removal Tool
-
-
-
-# Remove OneDrive
-
+winget install VideoLAN.VLC --accept-source-agreements --accept-package-agreements
 
 
 # Removing Optional Components
@@ -235,40 +224,19 @@ irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/newscript.p
 
 #-------------------------------------------------------------
 
-# Clear Internet Explorer cache
-Clear-IECache -Confirm:$false
 
-# Clear temporary files
-Remove-Item -Path "$env:TEMP\*" -Force -Recurse
-Remove-Item -Path "$env:LOCALAPPDATA\Temp\*" -Force -Recurse
-
-# Clear user profile temporary files
-Remove-Item -Path "$env:USERPROFILE\AppData\Local\Temp\*" -Force -Recurse
-Remove-Item -Path "$env:USERPROFILE\AppData\Local\Microsoft\Windows\Temporary Internet Files\*" -Force -Recurse
-
-# Clear Windows thumbnail cache
-Stop-Process -Name explorer -Force
-$thumbnailCachePath = "$env:LOCALAPPDATA\Microsoft\Windows\Explorer"
-Remove-Item -Path "$thumbnailCachePath\thumbcache_*.db" -Force
-Remove-Item -Path "$thumbnailCachePath\iconcache_*.db" -Force
-Start-Process explorer
-
-# Clear Recycle Bin
-Clear-RecycleBin -Confirm:$false
-
-# Removing Unnecessary Shortcuts
-Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\OneDrive.lnk
-Remove-Item $env:HOMEPATH\AppData\Roaming\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
-Remove-Item C:\ProgramData\Microsoft\Windows\Start` Menu\Programs\Firefox` Private` Browsing.lnk
-
-# Restart Windows Explorer to apply the changes
-Stop-Process -Name "explorer" -Force
-Start-Process "explorer"
 
 # Servies 
 
 
 irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/service.ps1 | iex
+
+# Dev
+
+winget install Git.Git --accept-source-agreements --accept-package-agreements
+winget install GitHub.cli --accept-source-agreements --accept-package-agreements
+winget install Microsoft.VisualStudioCode --accept-source-agreements --accept-package-agreements
+
 
 
 echo "DONE........"
