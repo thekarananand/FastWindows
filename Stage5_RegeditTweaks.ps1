@@ -44,7 +44,8 @@ $CurrentVerison_Search_SetZero = @(
     "SearchHistoryEnabled",
     "CortanaConsent",
     "BingSearchEnabled",
-    "AllowSearchToUseLocation"
+    "AllowSearchToUseLocation",
+    "SearchboxTaskbarMode"
 )
 
 if (!(Test-Path -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Search")) {
@@ -80,6 +81,7 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\SearchSe
 Write-Host "Disabled  : Windows Search History"
 Write-Host "Disabled  : Bing/Web Search in Windows Search"
 Write-Host "Disabled  : Dynamic Search Highlights"
+Write-Host "Enabled   : Hidden Search Bar"
 
 #---------------------------------------------------------------------------------------
 # Disable Advertising ID
