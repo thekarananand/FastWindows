@@ -27,6 +27,7 @@ Stop-Process -Name "explorer" -Force
 Start-Process "explorer"
 
 echo "`nDONE........"
+New-Item -Path "$env:USERPROFILE\Desktop\Execution_Completed.txt" -ItemType File
 Pause
 
 Exit
