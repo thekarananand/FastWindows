@@ -23,11 +23,11 @@ irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage4_Remo
 # Regedit Tweaks
 irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage5_RegeditTweaks.ps1 | iex
 
+
 Stop-Process -Name "explorer" -Force
 Start-Process "explorer"
 
-echo "`nDONE........"
 New-Item -Path "$env:USERPROFILE\Desktop\Execution_Completed.txt" -ItemType File
-Pause
+shutdown /r /t 0
 
 Exit
