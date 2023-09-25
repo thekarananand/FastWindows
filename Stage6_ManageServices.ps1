@@ -1,3 +1,6 @@
+Write-Host "`nStage 7 : MANAGING SERVICES"
+Write-Host "========================================================="
+
 # Disabled Services
 
 Set-Service -Name 'wlidsvc' -StartupType Disabled                           # Windows Live ID service
