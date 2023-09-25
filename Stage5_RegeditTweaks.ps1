@@ -4,6 +4,10 @@ Write-Host "========================================================="
 #----------------------------------------------------------------------------------------------------
 # Disabling Sponsored Apps in Start
 
+
+
+# Disable Automatic Installation of apps
+
 $ContentDeliveryManagerTweaks_SetZero = @(
     "ContentDeliveryAllowed",
     "FeatureManagementEnabled",
@@ -13,7 +17,8 @@ $ContentDeliveryManagerTweaks_SetZero = @(
     "RotatingLockScreenEnabled",
     "SlideshowEnabled",
     "SoftLandingEnabled",
-    "SubscribedContentEnabled"
+    "SubscribedContentEnabled",
+    "SilentInstalledAppsEnabled"
 )
 
 if (!(Test-Path -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager")) {
@@ -35,6 +40,13 @@ if (!(Test-Path -Path "HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Sta
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start" -Name 'ConfigureStartPins' -Value '{"pinnedList": [{}]}' -Type String -Force | Out-Null
 
 Write-Host "Disabled  : Sponsored Apps in Start"
+
+#----------------------------------------------------------------------------------------------------
+# Enabling More Tiles/Pinned Apps
+
+Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'Start_Layout' -Value 1 -Type DWord
+
+Write-Host "Disabled  : More Tiles/Pinned Apps in Start"
 
 #----------------------------------------------------------------------------------------------------
 # Disabling Stupid Behaviour of Windows Search
@@ -150,6 +162,19 @@ if (!(Test-Path -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection"
 }
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Value 0 | Out-Null
 
+if (!(Test-Path -Path "HKLM:\SYSTEM\ControlSet001\Services\DiagTrack")) {
+    New-Item -Path "HKLM:\SYSTEM\ControlSet001\Services\DiagTrack" -Force | Out-Null
+}
+Set-ItemProperty -Path 'HKLM:\SYSTEM\ControlSet001\Services\DiagTrack' -Name 'Start' -Value 4 -Type DWord
+
+if (!(Test-Path -Path "HKLM:\SYSTEM\ControlSet001\Services\dmwappushservice")) {
+    New-Item -Path "HKLM:\SYSTEM\ControlSet001\Services\dmwappushservice" -Force | Out-Null
+}
+Set-ItemProperty -Path 'HKLM:\SYSTEM\ControlSet001\Services\dmwappushservice' -Name 'Start' -Value 4 -Type DWord
+
+Stop-Service -Name 'DiagTrack' -Force
+Stop-Service -Name 'dmwappushservice' -Force
+
 Write-Host "Disabled  : Telemetry & Diagnostic data"
 
 #---------------------------------------------------------------------------------------
@@ -236,3 +261,141 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer
 
 Write-Host "Enabled   : Show Hidden Files"
 Write-Host "Enabled   : Show File Extenstions"
+
+#---------------------------------------------------------------------------------------
+# Disable Bing AI chat
+
+if (!(Test-Path -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge')) {
+    New-Item -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' -Force
+}
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Edge' -Name 'HubsSidebarEnabled' -Value 0 -Type DWord
+
+Write-Host "Disabled  : Bing AI chat"
+
+#---------------------------------------------------------------------------------------
+# Disable Mozilla Firefox Telemetry
+New-Item -Path 'HKLM:\SOFTWARE\Policies\Mozilla\Firefox' -Force
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Mozilla\Firefox' -Name 'DisableTelemetry' -Value 1 -Type DWord
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Mozilla\Firefox' -Name 'DisableDefaultBrowserAgent' -Value 1 -Type DWord
+
+Write-Host "Disabled  : Mozilla Firefox Telemetry"
+
+#---------------------------------------------------------------------------------------
+# Disable Google Chrome Telemetry
+
+New-Item -Path 'HKLM:\SOFTWARE\Policies\Google\Chrome' -Force
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Google\Chrome' -Name 'MetricsReportingEnabled' -Value 0 -Type DWord
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Google\Chrome' -Name 'ChromeCleanupReportingEnabled' -Value 0 -Type DWord
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Google\Chrome' -Name 'SubscribedContent-353696Enabled' -Value 0 -Type DWord
+
+Write-Host "Disabled  : Google Chrome Telemetry"
+
+#---------------------------------------------------------------------------------------
+# Disable Snap Assist Layout
+
+Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'EnableSnapAssistFlyout' -Value 0 -Type DWord
+
+Write-Host "Disabled  : Snap Assist Layout"
+
+#---------------------------------------------------------------------------------------
+# Disable Widgets
+
+Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'TaskbarDa' -Value 0 -Type DWord
+
+Write-Host "Disabled  : Widgets have been disabled."
+
+#---------------------------------------------------------------------------------------
+# Remove Desktop Stickers
+
+if (!(Test-Path -Path 'HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Stickers')) {
+    New-Item -Path 'HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Stickers' -Force
+}
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Stickers' -Name 'EnableStickers' -Value 0 -Type DWord
+
+Write-Host "Disabled  : Desktop Stickers"
+
+#---------------------------------------------------------------------------------------
+# Disable Suggested content in Settings app
+
+$ContentDelivery_InSettings_SetZero = @(
+    "SubscribedContent-338393Enabled",
+    "SubscribedContent-353694Enabled",
+    "SubscribedContent-353696Enabled"
+)
+
+foreach ($Tweak in $ContentDelivery_InSettings_SetZero) {
+    New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name $Tweak -Value 0 -Type DWord -Force
+}
+
+Write-Host "Disabled  : Suggested content in Settings"
+
+#---------------------------------------------------------------------------------------
+# Disable Most Used Apps
+
+if (!(Test-Path -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer')) {
+        New-Item -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer' -Force
+}    
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer' -Name 'ShowOrHideMostUsedApps' -Value 2 -Type DWord
+
+Write-Host "Disabled  : Most Used Apps"
+
+#---------------------------------------------------------------------------------------
+# Disable App access to running in background
+
+Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications' -Name 'GlobalUserDisabled' -Value 1 -Type DWord
+
+Write-Host "Disabled  : App access to running in background"
+
+#---------------------------------------------------------------------------------------
+# Disable Feedback notifications
+
+if (!(Test-Path -Path 'HKCU:\Software\Microsoft\Siuf\Rules')) {
+    New-Item -Path 'HKCU:\Software\Microsoft\Siuf\Rules' -Force
+}
+Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Siuf\Rules' -Name 'PeriodInNanoSeconds' -Value 0 -Type DWord
+Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Siuf\Rules' -Name 'NumberOfSIUFInPeriod' -Value 0 -Type DWord
+
+Write-Host "Disabled  : Feedback notifications"
+
+#---------------------------------------------------------------------------------------
+# Disable Windows Hello Biometrics
+
+if (!(Test-Path -Path 'HKLM:\Software\Policies\Microsoft\Biometrics')) {
+    New-Item -Path 'HKLM:\Software\Policies\Microsoft\Biometrics' -Force
+}
+Set-ItemProperty -Path 'HKLM:\Software\Policies\Microsoft\Biometrics' -Name 'Enabled' -Value 0 -Type DWord
+
+Write-Host "Disabled  : Windows Hello Biometrics"
+
+#---------------------------------------------------------------------------------------
+# Disable Compatibility Telemetry
+
+if (!(Test-Path -Path 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe')) {
+    New-Item -Path 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe' -Force
+}
+Set-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe' -Name 'Debugger' -Value '%windir%\System32\taskkill.exe' -Type String
+
+Write-Host "Disabled  : Compatibility Telemetry"
+
+#---------------------------------------------------------------------------------------
+# Hide Search icon on the taskbar
+
+Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Value 0 -Type DWord
+
+Write-Host "Disabled  : Search icon on the taskbar has been disabled."
+
+#---------------------------------------------------------------------------------------
+# Disable Game DVR feature
+
+Set-ItemProperty -Path 'HKCU:\System\GameConfigStore' -Name 'GameDVR_Enabled' -Value 0 -Type DWord
+Set-ItemProperty -Path 'HKCU:\System\GameConfigStore' -Name 'GameDVR_FSEBehaviorMode' -Value 2 -Type DWord
+Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR' -Name 'value' -Value 0 -Type DWord
+
+Write-Host "Disabled  : Game DVR feature has been successfully disabled."
+
+#---------------------------------------------------------------------------------------
+# Remove Windows 11 System requirements watermark
+
+Set-ItemProperty -Path 'HKCU:\Control Panel\UnsupportedHardwareNotificationCache' -Name 'SV2' -Value 0 -Type DWord
+
+Write-Host "Disabled  : Unsupported Hardware Notification"
