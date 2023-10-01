@@ -39,7 +39,6 @@ $Capabilities = @(
     "Language.Speech",
     "Language.OCR",
     "Language.Handwriting",
-    "Hello.Face",
     "DirectX",
     "InternetExplorer",
     "App.StepsRecorder"

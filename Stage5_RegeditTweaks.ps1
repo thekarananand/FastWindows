@@ -356,16 +356,6 @@ Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Siuf\Rules' -Name 'NumberOfSIUF
 Write-Host "Disabled  : Feedback notifications"
 
 #---------------------------------------------------------------------------------------
-# Disable Windows Hello Biometrics
-
-if (!(Test-Path -Path 'HKLM:\Software\Policies\Microsoft\Biometrics')) {
-    New-Item -Path 'HKLM:\Software\Policies\Microsoft\Biometrics' -Force | Out-Null
-}
-Set-ItemProperty -Path 'HKLM:\Software\Policies\Microsoft\Biometrics' -Name 'Enabled' -Value 0 -Type DWord -Force | Out-Null 
-
-Write-Host "Disabled  : Windows Hello Biometrics"
-
-#---------------------------------------------------------------------------------------
 # Disable Compatibility Telemetry
 
 if (!(Test-Path -Path 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe')) {
