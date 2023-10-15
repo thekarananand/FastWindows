@@ -387,3 +387,13 @@ Write-Host "Disabled  : Game DVR feature has been successfully disabled."
 Set-ItemProperty -Path 'HKCU:\Control Panel\UnsupportedHardwareNotificationCache' -Name 'SV2' -Value 0 -Type DWord -Force | Out-Null 
 
 Write-Host "Disabled  : Unsupported Hardware Notification"
+
+#---------------------------------------------------------------------------------------
+# Hiding Home Section in Windows 11 Settings
+
+New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "SettingsPageVisibility" -PropertyType String -Force -Value "hide:home"
+
+#---------------------------------------------------------------------------------------
+# Setting Default Location to This PC in Explorer
+
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\LaunchTo" -Value 1

@@ -7,13 +7,14 @@ $packagesToSkip = @(
     "Microsoft.HEVCVideoExtension",
     "Microsoft.RawImageExtension",
     "Microsoft.ScreenSketch",
-    "Microsoft.StorePurchaseApp",
     "Microsoft.VCLibs.140.00",
     "Microsoft.VP9VideoExtensions",
     "Microsoft.WebMediaExtensions",
     "Microsoft.WebpImageExtension",
     "Microsoft.WindowsNotepad",
     "Microsoft.WindowsStore",
+    "Microsoft.Services.Store.Engagement",
+    "Microsoft.StorePurchaseApp",
     "Microsoft.WindowsTerminal",
     "Microsoft.SecHealthUI"
 )
