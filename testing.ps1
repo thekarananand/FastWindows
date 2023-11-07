@@ -14,10 +14,10 @@ $packagesToSkip = @(
     "Microsoft.StorePurchaseApp",
     "Microsoft.WindowsTerminal",
     "Microsoft.SecHealthUI",
-    "Microsoft.MSPaint"
 )
 
 $database = @(
+    "Microsoft.MSPaint",                                                # Paint 3D
     "Microsoft.549981C3F5F10",
     "Microsoft.BingWeather",
     "Microsoft.GetHelp",
