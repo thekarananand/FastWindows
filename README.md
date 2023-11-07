@@ -12,3 +12,4 @@ irm https://raw.githubusercontent.com/thekarananand/FastWindows/testing/testing.
 
 - WIN10 22H2 19045.2965
 - WIN11 22H2 22621.1702
+- WIN11 23H2 22631.2428
