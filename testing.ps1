@@ -13,7 +13,7 @@ $packagesToSkip = @(
     "Microsoft.Services.Store.Engagement",
     "Microsoft.StorePurchaseApp",
     "Microsoft.WindowsTerminal",
-    "Microsoft.SecHealthUI",
+    "Microsoft.SecHealthUI"
 )
 
 $database = @(
