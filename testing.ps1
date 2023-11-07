@@ -13,7 +13,8 @@ $packagesToSkip = @(
     "Microsoft.Services.Store.Engagement",
     "Microsoft.StorePurchaseApp",
     "Microsoft.WindowsTerminal",
-    "Microsoft.SecHealthUI"
+    "Microsoft.SecHealthUI",
+    "Microsoft.Paint"
 )
 
 $database = @(
@@ -48,7 +49,17 @@ $database = @(
     "Microsoft.XboxSpeechToTextOverlay",
     "Microsoft.YourPhone",
     "Microsoft.ZuneMusic",
-    "Microsoft.ZuneVideo"
+    "Microsoft.ZuneVideo",
+    "Clipchamp.Clipchamp",
+    "Microsoft.BingNews",
+
+    "Microsoft.GamingApp",
+    "Microsoft.PowerAutomateDesktop",
+    "Microsoft.Todos",
+    "MicrosoftCorporationII.QuickAssist",
+    "MicrosoftTeams",
+    "MicrosoftWindows.Client.WebExperience"                     #spotlight
+
 )
 
 dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | ForEach-Object {
