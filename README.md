@@ -1,5 +1,5 @@
 # Testing Branch
-The Goal of this Branch is to collect the list of Bloatware Apps and to eliminate `Get-AppxPackage -allusers '*' | Remove-AppxPackage' over all install APPX apps for a more controlled behavior.
+The Goal of this Branch is to collect the list of Bloatware Apps and to eliminate ```Get-AppxPackage -allusers '*' | Remove-AppxPackage'``` over all install APPX apps for a more controlled behavior.
 
 ### RUN THE TESTING SCRIPT
 
