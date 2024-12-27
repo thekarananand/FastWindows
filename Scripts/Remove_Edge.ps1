@@ -1,7 +1,7 @@
 $path = "C:\fastwindows"
-$batfilepath = "$path/Edge_Removal.bat"
-$url = "https://raw.githubusercontent.com/AveYo/fox/main/Edge_Removal.bat"
- 
+$batfilepath = "$path/edgeremoval.bat"
+$url = "https://raw.githubusercontent.com/thekarananand/FastWindows/main/ExternalScripts/edgeremoval.bat"
+
 try {
     if (-Not (Test-Path -Path $path)) {
         New-Item -Path $path -ItemType Directory
