@@ -22,8 +22,6 @@ $Services_to_Disable = @(
     'XblGameSave',                       # Xbox Services
     'XboxGipSvc',                        # Xbox Services
     'XboxNetApiSvc'                      # Xbox Services
-
-
 )
 
 foreach ($Service in $Services_to_Disable) {

@@ -14,9 +14,12 @@ $baseURL = "https://raw.githubusercontent.com/thekarananand/FastWindows/main/Scr
 # Define the script names
 $scripts = @(
     "Regedit_Tweaks.ps1",
+    "Remove_Edge.ps1",
     "Remove_WindowsWidgets.ps1",
     "Remove_OneDrive.ps1",
-    "Remove_UWP_Apps.ps1"
+    "Remove_UWP_Apps.ps1",
+    "Install_Win32Apps.ps1",
+    "Remove_OptionalFeatures.ps1",
 )
 
 # Loop through each script name and execute it
