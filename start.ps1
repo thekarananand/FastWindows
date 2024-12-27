@@ -32,4 +32,8 @@ foreach ($script in $scripts) {
     Write-Output " "
 }
 
-New-Item -Path "$env:USERPROFILE\Desktop\Execution_Completed.txt" -ItemType File
+$completeFile = "$env:USERPROFILE\Desktop\Execution_Completed.txt"
+
+if (-Not (Test-Path -Path $completeFile)) {
+    New-Item -Path $completeFile -ItemType File
+}
