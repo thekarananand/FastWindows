@@ -19,7 +19,7 @@ $scripts = @(
     "Remove_OneDrive.ps1",
     "Remove_UWP_Apps.ps1",
     "Install_Win32Apps.ps1",
-    "Remove_OptionalFeatures.ps1",
+    "Remove_OptionalFeatures.ps1"
 )
 
 # Loop through each script name and execute it
