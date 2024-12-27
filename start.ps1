@@ -8,14 +8,26 @@ if (-not $Admin) {
     Exit
 }
 
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/NewScript/Regedit_Tweaks.ps1 | iex
+# Define the base URL
+$baseURL = "https://raw.githubusercontent.com/thekarananand/FastWindows/main/Scripts/"
 
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/NewScript/Remove_OneDrive.ps1 | iex
+# Define the script names
+$scripts = @(
+    "Regedit_Tweaks.ps1",
+    "Remove_WindowsWidgets.ps1",
+    "Remove_OneDrive.ps1",
+    "Remove_UWP_Apps.ps1"
+)
 
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/NewScript/Remove_UWP_Apps.ps1 | iex
-
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/NewScript/Remove_WindowsWidgets.ps1 | iex
+# Loop through each script name and execute it
+foreach ($script in $scripts) {
+    $url = "$baseURL$script"
+    Write-Output "========================================================="
+    Write-Output "Executing : $script"
+    Write-Output "========================================================="
+    irm $url | iex
+    Write-Output " "
+}
 
 New-Item -Path "$env:USERPROFILE\Desktop\Execution_Completed.txt" -ItemType File
-
 Exit
