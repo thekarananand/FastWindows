@@ -16,7 +16,6 @@ $registrySettings = @(
 )
     
 foreach ($setting in $registrySettings) {
-
     if (-not (Test-Path $setting.Path)) {
         New-Item -Path $setting.Path -Force
         New-ItemProperty -Path $setting.Path -Name $setting.Name -Value $setting.Value -Type $setting.Type
@@ -25,7 +24,7 @@ foreach ($setting in $registrySettings) {
     Write-Output "$($setting.Purpose)"
 }
 
-Get-AppxPackage Microsoft.WidgetsPlatformRuntime | Remove-AppxPackage
+Get-AppxPackage Microsoft.WidgetsPlatformRuntime | Remove-AppxPackage 
 Write-Output "Removed    : Microsoft.WidgetsPlatformRuntime"
 
 Get-AppxPackage *WebExperience* | Remove-AppxPackage
