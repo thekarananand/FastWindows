@@ -23,7 +23,7 @@ $scripts = @(
 foreach ($script in $scripts) {
     $url = "$baseURL$script"
     Write-Output "========================================================="
-    Write-Output "Executing : $script"
+    Write-Output "Executing  : $script"
     Write-Output "========================================================="
     irm $url | iex
     Write-Output " "

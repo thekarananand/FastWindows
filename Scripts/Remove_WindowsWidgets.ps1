@@ -26,13 +26,13 @@ foreach ($setting in $registrySettings) {
 }
 
 Get-AppxPackage Microsoft.WidgetsPlatformRuntime | Remove-AppxPackage
-Write-Output "Removed   : Microsoft.WidgetsPlatformRuntime"
+Write-Output "Removed    : Microsoft.WidgetsPlatformRuntime"
 
 Get-AppxPackage *WebExperience* | Remove-AppxPackage
-Write-Output "Removed   : WebExperience Packages"
+Write-Output "Removed    : WebExperience Packages"
 
 winget uninstall --id 9MSSGKG348SP
-Write-Output "Removed   : 9MSSGKG348SP"
+Write-Output "Removed    : 9MSSGKG348SP"
 
 Write-Output " "
-Write-Output "Removed   : Windows Widgets"
+Write-Output "Removed    : Windows Widgets"

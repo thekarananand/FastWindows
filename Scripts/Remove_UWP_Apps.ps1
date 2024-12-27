@@ -48,16 +48,15 @@ dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | ForEach-
     $appxName = $packageName.Split('_')[0]
     
     if ($packagesToSkip -contains $appxName) {
-            Write-Host "Skipped   : $packageName"
+            Write-Host "Skipped    : $packageName"
     }
     else {
         try {
             dism /Online /Remove-ProvisionedAppxPackage /PackageName:$packageName | Out-Null
             Get-AppxPackage -allusers $appxName | Remove-AppxPackage | Out-Null
-            Write-Host "Removed   : $packageName"
-
+            Write-Host "Removed    : $packageName"
         } catch {
-            Write-Host "Error     : $packageName"
+            Write-Host "Error      : $packageName"
         }
     }
 }
