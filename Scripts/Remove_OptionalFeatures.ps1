@@ -1,6 +1,3 @@
-Write-Host "`nStage 4 : REMOVED OPTIONAL FEATURES"
-Write-Host "========================================================="
-
 $Packages = @(
     "InternetExplorer",
     # "Windows-Kernel-LA57",
@@ -18,9 +15,9 @@ foreach ($Package in $Packages) {
         $packageName = $_.Line.Split(':')[1].Trim()
         try {
             DISM /Online /Remove-Package /NoRestart /PackageName:$packageName | Out-Null
-            Write-Host "Removed   : $packageName"
+            Write-Host "Removed    : $packageName"
         } catch {
-            Write-Host "Error     : $packageName"
+            Write-Host "Error      : $packageName"
         }
     }
 }
@@ -50,9 +47,9 @@ foreach ($Capability in $Capabilities) {
         $capabilityName = $_.Line.Split(':')[1].Trim()
         try {
             DISM /Online /Remove-Capability /NoRestart /CapabilityName:$capabilityName | Out-Null
-            Write-Host "Removed   : $capabilityName"
+            Write-Host "Removed    : $capabilityName"
         } catch {
-            Write-Host "Error     : $capabilityName"
+            Write-Host "Error      : $capabilityName"
         }
     }
 }
