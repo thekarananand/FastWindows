@@ -1,9 +1,10 @@
-$path = "C:\fastwindows"
-$batfilepath = "$path/edgeremoval.bat"
+$path = "C:\fastwindows\"
+$filename = "edgeremoval.bat"
+$batfilepath = "$path\$filename"
 $url = "https://raw.githubusercontent.com/thekarananand/FastWindows/main/ExternalScripts/edgeremoval.bat"
 
 try {
-    Write-Output "Executing... External-Script : $batfilepath"
+    Write-Output "Execute External-Script : $filename"
     if (-Not (Test-Path -Path $path)) {
         New-Item -Path $path -ItemType Directory | Out-Null
     }
