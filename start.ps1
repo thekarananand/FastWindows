@@ -8,26 +8,14 @@ if (-not $Admin) {
     Exit
 }
 
-# Remove Appx Packages apps 
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage1_RemoveAppxPackages.ps1 | iex
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/NewScript/Regedit_Tweaks.ps1 | iex
 
-# Remove Win32 apps 
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage2_RemoveWin32Apps.ps1 | iex
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/NewScript/Remove_OneDrive.ps1 | iex
 
-# Install New Apps 
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage3_InstallNewApps.ps1 | iex
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/NewScript/Remove_UWP_Apps.ps1 | iex
 
-# Remove Optional Features & Capabilities
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage4_RemoveOptionalFeatures.ps1 | iex
-
-# Regedit Tweaks
-irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/Stage5_RegeditTweaks.ps1 | iex
-
-
-Stop-Process -Name "explorer" -Force
-Start-Process "explorer"
+irm https://raw.githubusercontent.com/thekarananand/FastWindows/main/NewScript/Remove_WindowsWidgets.ps1 | iex
 
 New-Item -Path "$env:USERPROFILE\Desktop\Execution_Completed.txt" -ItemType File
-shutdown /r /t 0
 
 Exit
