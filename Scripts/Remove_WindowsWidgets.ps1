@@ -12,7 +12,7 @@ $registrySettings = @(
         Name    = "value"
         Value   = 0
         Type    = "DWord"
-    },
+    }
 )
     
 foreach ($setting in $registrySettings) {

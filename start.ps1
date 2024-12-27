@@ -30,4 +30,3 @@ foreach ($script in $scripts) {
 }
 
 New-Item -Path "$env:USERPROFILE\Desktop\Execution_Completed.txt" -ItemType File
-Exit
