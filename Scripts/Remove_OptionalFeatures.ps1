@@ -4,8 +4,8 @@ Write-Host "========================================================="
 $Packages = @(
     "InternetExplorer",
     # "Windows-Kernel-LA57",
-    "MediaPlayer"
-    "Wallpaper-Content-Extended",
+    "MediaPlayer",
+    "Wallpaper-Content-Extended"
     # "TabletPCMath",
     # "LanguageFeatures-Handwriting",
     # "LanguageFeatures-OCR",
