@@ -1,0 +1,28 @@
+[
+  "Microsoft.DesktopAppInstaller",
+  "Microsoft.ScreenSketch",
+  "Microsoft.WindowsNotepad",
+  "Microsoft.WindowsStore",
+  "Microsoft.Services.Store.Engagement",
+  "Microsoft.StorePurchaseApp",
+  "Microsoft.WindowsTerminal",
+  "Microsoft.SecHealthUI",
+  "Microsoft.WindowsCamera",
+  "Microsoft.WindowsSoundRecorder",
+  "Microsoft.Windows.Photos",
+  "Microsoft.Winget.Source",
+
+  "Microsoft.VP9VideoExtensions",
+  "Microsoft.WebMediaExtensions",
+  "Microsoft.WebpImageExtension",
+  "Microsoft.HEIFImageExtension",
+  "Microsoft.HEVCVideoExtension",
+  "Microsoft.RawImageExtension",
+  "Microsoft.VCLibs.140.00",
+
+  "RealtekSemiconductorCorp.RealtekAudioControl",
+  "AppUp.IntelGraphicsExperience",
+  "AppUp.ThunderboltControlCenter",
+  "DTSInc.DTSAudioProcessing",
+  "ElevocTechnologyCo.Ltd.ElevocSmartMicrophoneSettin"
+]

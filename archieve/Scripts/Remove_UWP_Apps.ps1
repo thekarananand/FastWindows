@@ -28,25 +28,13 @@ $packagesToSkip = @(
     "DTSInc.DTSAudioProcessing",
     "ElevocTechnologyCo.Ltd.ElevocSmartMicrophoneSettin"
 
-    # ===================================================================
-    # 📌 Your Device may include various Vendor Apps.
-    #    To identify these apps, you can use one of the following methods:
-    #
-    #    1️⃣  Retrieve all installed AppX packages:
-    #        Get-AppxPackage -allusers * | Select-Object Name
-    #
-    #    2️⃣  Check provisioned AppX packages:
-    #        dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName
-    #
-    # 🚀 Feel free to contribute by submitting your vendor app details via a PR!
-    # ===================================================================
 
 )
 
 dism /Online /Get-ProvisionedAppxPackages | Select-String PackageName | ForEach-Object {
     $packageName = $_.Line.Split(':')[1].Trim()
     $appxName = $packageName.Split('_')[0]
-    
+
     if ($packagesToSkip -contains $appxName) {
             Write-Output "Skipped    : $appxName"
     }
