@@ -10,7 +10,11 @@
   "Microsoft.WindowsCamera",
   "Microsoft.WindowsSoundRecorder",
   "Microsoft.Windows.Photos",
+  "Microsoft.WindowsCalculator",
+  "Microsoft.WindowsAlarms",
   "Microsoft.Winget.Source",
+  "ZedIndustries.Zed",
+  "Microsoft.VisualStudioCode",
 
   "Microsoft.VP9VideoExtensions",
   "Microsoft.WebMediaExtensions",
@@ -19,6 +23,7 @@
   "Microsoft.HEVCVideoExtension",
   "Microsoft.RawImageExtension",
   "Microsoft.VCLibs.140.00",
+  "Microsoft.AVCEncoderVideoExtension",
 
   "RealtekSemiconductorCorp.RealtekAudioControl",
   "AppUp.IntelGraphicsExperience",
