@@ -15,6 +15,12 @@
   "Microsoft.Winget.Source",
   "ZedIndustries.Zed",
   "Microsoft.VisualStudioCode",
+  "Microsoft.MicrosoftStickyNotes",
+  "Microsoft.OutlookForWindows",
+  "Microsoft.Paint",
+  "Microsoft.Windows.DevHome",
+  "Microsoft.YourPhone",
+  "Microsoft.ApplicationCompatibilityEnhancements",
 
   "Microsoft.VP9VideoExtensions",
   "Microsoft.WebMediaExtensions",
@@ -24,6 +30,8 @@
   "Microsoft.RawImageExtension",
   "Microsoft.VCLibs.140.00",
   "Microsoft.AVCEncoderVideoExtension",
+  "Microsoft.AV1VideoExtension",
+  "Microsoft.MPEG2VideoExtension",
 
   "RealtekSemiconductorCorp.RealtekAudioControl",
   "AppUp.IntelGraphicsExperience",
