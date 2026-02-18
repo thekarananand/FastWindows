@@ -1,6 +1,7 @@
 # Import Logic Modules
 from logic._01_StoreBloatRemover import StoreBloatRemover
 from logic._02_InstallWingetApps import InstallWingetApps
+from logic._99_FinalCleanUp      import FinalCleanUp
 
 # Import Custom Modules
 from utils.DataHandler import DataHandler
@@ -17,5 +18,7 @@ def main():
     InstallWingetApps(
         pkgIds=data.read("./data/InstallWingetApps.json")
     )
+
+    FinalCleanUp()
 
 main()
