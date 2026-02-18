@@ -1,13 +1,21 @@
-# Import Custom Modules
+# Import Logic Modules
 from logic._01_StoreBloatRemover import StoreBloatRemover
+from logic._02_InstallWingetApps import InstallWingetApps
+
+# Import Custom Modules
 from utils.DataHandler import DataHandler
-from utils.LogHandler import LogHandler
 
 # Initialize Custom Objects
-log = LogHandler()
 data = DataHandler()
 
 # Main Block
-StoreBloatRemover(
-    bypassPkgNameList=data.read("./data/BypassStoreAppRemoval.json")
-)
+def main():
+    StoreBloatRemover(
+        bypassPkgNameList=data.read("./data/BypassStoreAppRemoval.json")
+    )
+
+    InstallWingetApps(
+        pkgIds=data.read("./data/InstallWingetApps.json")
+    )
+
+main()

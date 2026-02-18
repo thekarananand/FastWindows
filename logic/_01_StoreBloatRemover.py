@@ -1,6 +1,5 @@
 # Import Custom Modules
 import json
-import subprocess
 
 from models.models import Process
 from utils.LogHandler import LogHandler
@@ -9,7 +8,6 @@ from utils.ShellHandler import ShellHandler
 # Initialize Custom Objects
 log = LogHandler()
 run = ShellHandler()
-
 
 # Core Logic Defination
 def StoreBloatRemover(bypassPkgNameList=[]):

@@ -1,8 +1,9 @@
 class LogHandler:
     def SectionHeading(self, section_name):
-        print("================================")
+        print("")
+        print("==================================================")
         print(section_name)
-        print("================================")
+        print("==================================================")
         print("")
 
     def red(self, tag, desc):
@@ -13,3 +14,6 @@ class LogHandler:
 
     def green(self, tag, desc):
         print(f"\033[32m[{tag}] {desc}\033[0m")
+
+    def info(self, logline):
+        print(logline)
